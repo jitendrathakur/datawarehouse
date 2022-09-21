@@ -4,14 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
+import { baseURL } from '../ApplicationConstant'
 
 export const Login = () => {
 
     const history = useNavigate();
     const onSubmitButtonClick = () => {
-        console.log('=======')
-        axios.post('http://192.168.1.10:3000/login', formData).then(() => {
-            history('./dashboard');
+        axios.post(`${baseURL}/login`, formData).then((res) => {
+            if (res.data.data === 'success')
+                history('./dashboard');
         })
     }
 
