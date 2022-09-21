@@ -1,7 +1,10 @@
 var express = require('express');
 var fs = require('fs');
+var cors= require('cors');
 var app = express();
+app.use(cors());
 app.use(express.json());
+
 
 app.post('/login', function (req, res) {
     
@@ -34,7 +37,7 @@ app.post('/download', function (req, res) {
   
 })
 
-app.listen(3000, function () {
-    console.log('Server running on port 3000');
+app.listen(4000, function () {
+    console.log('Server running on port 4000');
 });
 
