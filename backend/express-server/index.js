@@ -9,9 +9,9 @@ app.use(express.json());
 app.post('/login', function (req, res) {
     
     console.log(req.body);
-    if(req.body.server_name === "test" &&
-    req.body.user_name === "test" &&
-    req.body.passward === "test") {
+    if(req.body.server_name == "test" &&
+    req.body.user_name == "test" &&
+    req.body.password == "test") {
         res.send(JSON.stringify('success'));
 
     } else {
