@@ -6,9 +6,9 @@ app.use(express.json());
 app.post('/login', function (req, res) {
     
     console.log(req.body);
-
-    var correct = false;
-    if (correct) {
+    if(req.body.server_name === "test" &&
+    req.body.user_name === "test" &&
+    req.body.passward === "test") {
         res.send(JSON.stringify('success'));
 
     } else {
@@ -21,8 +21,11 @@ app.post('/download', function (req, res) {
     
     console.log(req.body);
 
-    var correct = false;
-    if (correct) {
+    
+    if(req.body.database_name === "test" &&
+    req.body.table_name === "test" &&
+    req.body.location === "test" &&
+    req.body.format === "test") {
         res.send(JSON.stringify('Download'));
 
     } else {
