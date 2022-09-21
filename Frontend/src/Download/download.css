@@ -1,0 +1,31 @@
+#database{
+    width: 300px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.login-container.downlaod{
+    height: 370px;
+}
+
+.download-button{
+    background: transparent;
+    color: blue;
+    border: 1px solid blue;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.dropdown-label{
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.database-image{
+    height: 70px;
+}
+
+h4{
+    margin-top: 0px;
+}
