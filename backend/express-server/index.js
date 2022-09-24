@@ -1,8 +1,10 @@
 var express = require('express');
 var multer = require('multer');
+var cors = require('cors')
 var fs = require('fs');
 var app = express();
 app.use(express.json());
+app.use(cors());
 
 
 //23- task 1:-upload image
@@ -82,16 +84,12 @@ app.post("/jsonfile", upload.single("json"),(req,res) => {
                 }
    })
 
-
-
-
-
 app.post('/login', function (req, res) {
     
     console.log(req.body);
     if(req.body.server_name === "test" &&
     req.body.user_name === "test" &&
-    req.body.passward === "test") {
+    req.body.password === "test") {
         res.send(JSON.stringify('success'));
 
     } else {
