@@ -26,6 +26,8 @@ app.post("/single", upload.single("image"),(req,res) => {
 
 //23-today task 2 :-upload csv file
 
+
+
 var fileStorage = multer.diskStorage({
     destination: (req,file,cb) => {
         cb(null,'./csvdata' )
@@ -36,14 +38,43 @@ var fileStorage = multer.diskStorage({
 });
 
 
-var upload = multer({storage:fileStorage});
-app.post("/csvfile", upload.single("csv"),(req,res) => {
+    var upload = multer({storage:fileStorage});
+    app.post("/csvfile", upload.single("csv"),(req,res) => {
         console.log(req.file);
-        res.send("upload file successfully!");
-})
+       
+        fs.readFile('./csvdata/1664177341924...data.csv','utf8',readingFile);
+  
+         function readingFile(error,data)
+          {
+               if(error){
+               console.log(error);
+               } else
+                {
+                   console.log(data);
+                   
+                   fs.writeFile('./file2.csv',data,'utf8',(err)=>{
+                    if(err){
+                        console.log(err)
+                      } else {
+                        console.log('Content has been pasted to file2.csv file');
+                         res.download('./file2.csv');
+                        }
+                   });
+                } 
+           }
+               
+                   
+     })
+     
 
 
-//23-task 3:- upload json file and read data and create new json file using that data done-/download file pending 
+
+
+
+
+
+//23-task 3:- upload json file and read data and create new json file using that data done-
+//download file pending 
 
 var fileStorage = multer.diskStorage({
     destination: (req,file,cb) => {
@@ -56,11 +87,11 @@ var fileStorage = multer.diskStorage({
 var upload = multer({storage:fileStorage});
 app.post("/jsonfile", upload.single("json"),(req,res) => {
         console.log(req.file);
-        res.send("upload file successfully!");
+        
 
-// 23-task 4 
+        // 23-task 4 
 
-      fs.readFile('./jsondata/1663929894154...data2.json','utf8',readingFile);
+      fs.readFile('./jsondata/1664183036031...data2.json','utf8',readingFile);
   
          function readingFile(error,data)
           {
@@ -82,7 +113,9 @@ app.post("/jsonfile", upload.single("json"),(req,res) => {
                      }
                      res.download('./file2.json',"done");
                 }
-   })
+    })
+
+
 
 app.post('/login', function (req, res) {
     
